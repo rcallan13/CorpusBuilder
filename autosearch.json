@@ -1,0 +1,13 @@
+{
+    "search_entries": [{
+        "search_name": "coins",
+        "expression": "coins and collectibles",
+        "location": "vancouver, b.c.",
+        "flavor": "business"
+    }, {
+        "search_name": "hairdresser",
+        "expression": "hair dresser",
+        "location": "vancouver, b.c.",
+        "flavor": "business"
+    }]
+}
