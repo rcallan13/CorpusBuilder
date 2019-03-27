@@ -65,7 +65,7 @@ class AutoSearchProcessor {
             
             if let jsonObj = item[AutoSearchConst.pagemapKey] as? Dictionary<String, Any> {
                 for (k,v) in jsonObj {
-                    //NSLog("Key/Value k: \(k) v: \(v)")
+                    NSLog("Key/Value k: \(k) v: \(v)")
                     searchResult.keyArray?.append(k)
                     
                     if k == "metatags" {
@@ -74,6 +74,7 @@ class AutoSearchProcessor {
                             searchResult.metatags = Dictionary<String, Any?>()
                             for val in metatags {
                                 for (k,v) in val {
+                                    NSLog("Key/Value k: \(k) v: \(v)")
                                     searchResult.key = k
                                     searchResult.value = v
                                 }

@@ -66,6 +66,9 @@ class ViewController: NSViewController, AutoSearchDelegate {
                 }
                 businesses.append(business)
             }
+            if let reviews = searchResult.kvDict?["reviews"] as? NSArray {
+                NSLog("Reviews: \(reviews)")
+            }
             
             self.searchResults?[searchPath] = businesses
             //resultsStr.append("}")
@@ -77,28 +80,26 @@ class ViewController: NSViewController, AutoSearchDelegate {
     
     private func displayResults(_ searchResults: [SearchModel], prettyPrinted: Bool) {
         
-        var resultsStr: String?
+        var resultJson = String()
+        resultJson.append("{\"results\":[")
         
-        let options = prettyPrinted ? JSONSerialization.WritingOptions.prettyPrinted : JSONSerialization.WritingOptions(rawValue: 0)
-        
-        
-        if JSONSerialization.isValidJSONObject(searchResults) {
-            
-            do{
-                let data = try JSONSerialization.data(withJSONObject: searchResults, options: options)
-                if let temp = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
-                    resultsStr = temp as String
-                    DispatchQueue.main.async {
-                        self.scrollView.documentView!.insertText(resultsStr!)
-                    }
-                }
-            } catch {
-                
-                print("error")
-                //Access error here
+        var isFirst = true
+        for searchModel in searchResults {
+            if !isFirst {
+                resultJson.append(",")
             }
-            
+            isFirst = false
+            let jsonStr = searchModel.toJsonString()
+            resultJson.append(jsonStr!)
         }
+        
+        resultJson.append("]}\n\n\n")
+        NSLog(resultJson)
+        //if JSONSerialization.isValidJSONObject(resultJson) {
+            DispatchQueue.main.async {
+                self.scrollView.documentView!.insertText(resultJson)
+            }
+        //}
     }
     
     private func initSearch() {

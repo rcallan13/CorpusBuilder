@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SearchModel {
+struct SearchModel: Codable {
     var searchname: String?
     var name: String?
     var telephone: String?
@@ -18,4 +18,18 @@ struct SearchModel {
     var region: String?
     var postalcode: String?
     var address: String?
+    var reviews: [String?]?
+    
+    func toJsonString() -> String? {
+        do {
+            let jsonEncoder = JSONEncoder()
+            jsonEncoder.outputFormatting = .prettyPrinted
+            let jsonData = try jsonEncoder.encode(self)
+            let json = String(data: jsonData, encoding: String.Encoding.utf8)
+            return json
+        } catch {
+            
+        }
+        return nil
+    }
 }
