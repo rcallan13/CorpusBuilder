@@ -52,26 +52,23 @@ class ViewController: NSViewController, AutoSearchDelegate {
                     business.thumbnail = dict["image"] as? String
                     business.name = dict["name"] as? String
                     business.telephone = dict["telephone"] as? String
+                    business.reviewUrl = searchResult.reviewUrl
                 }
                 //resultsStr.append("\"name\": \"\(business.name!)\"")
                 //resultsStr.append("}\n")
             }
-            if let localbusiness = searchResult.kvDict?["postaladdress"] as? NSArray {
-                if let dict = localbusiness[0] as? NSDictionary {
+            if let postalAddress = searchResult.kvDict?["postaladdress"] as? NSArray {
+                if let dict = postalAddress[0] as? NSDictionary {
                     business.country = dict["addresscountry"] as? String
                     business.locality = dict["addresslocality"] as? String
                     business.region = dict["addressregion"] as? String
                     business.postalcode = dict["postalcode"] as? String
                     business.address = dict["streetaddress"] as? String
+                    
                 }
-                businesses.append(business)
             }
-            if let reviews = searchResult.kvDict?["reviews"] as? NSArray {
-                NSLog("Reviews: \(reviews)")
-            }
-            
+            businesses.append(business)
             self.searchResults?[searchPath] = businesses
-            //resultsStr.append("}")
         }
         
         //activityIndicator.stopAnimating()

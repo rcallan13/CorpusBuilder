@@ -34,7 +34,6 @@ class AutoSearchProcessor {
                 parseItems(searchPath, items: value)
             }
         }
-        //pipelineDelegate?.onProcessorResults(searchResults)
         analyzeResult()
         pipelineDelegate?.onProcessorResults(searchResults)
     }
@@ -57,7 +56,7 @@ class AutoSearchProcessor {
             searchResult.searchPath = searchPath
             searchResult.keyArray = Array<String>()
             searchResult.kvDict = Dictionary<String, Any?>()
-            //NSLog("Item: \(String(describing: item))")
+            NSLog("Item: \(String(describing: item))")
             
             searchResult.displayLink = item[AutoSearchConst.displayLinkKey] as? String
             searchResult.formattedLink = item[AutoSearchConst.formattedUrlKey] as? String
@@ -65,7 +64,7 @@ class AutoSearchProcessor {
             
             if let jsonObj = item[AutoSearchConst.pagemapKey] as? Dictionary<String, Any> {
                 for (k,v) in jsonObj {
-                    NSLog("Key/Value k: \(k) v: \(v)")
+                    NSLog("Key/Value k (Outter): \(k) v: \(v)")
                     searchResult.keyArray?.append(k)
                     
                     if k == "metatags" {
@@ -74,7 +73,10 @@ class AutoSearchProcessor {
                             searchResult.metatags = Dictionary<String, Any?>()
                             for val in metatags {
                                 for (k,v) in val {
-                                    NSLog("Key/Value k: \(k) v: \(v)")
+                                    NSLog("Key/Value k (Inner): \(k) v: \(v)")
+                                    if k == "og:url", let _ = v as? String {
+                                        searchResult.reviewUrl = v as? String
+                                    }
                                     searchResult.key = k
                                     searchResult.value = v
                                 }

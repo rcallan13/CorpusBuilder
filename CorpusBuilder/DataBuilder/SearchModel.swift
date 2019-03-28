@@ -19,6 +19,7 @@ struct SearchModel: Codable {
     var postalcode: String?
     var address: String?
     var reviews: [String?]?
+    var reviewUrl: String?
     
     func toJsonString() -> String? {
         do {

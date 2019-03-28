@@ -20,7 +20,7 @@ public class AutoSearchResult {
     public var displayLink: String?
     public var ratingvalue: String?
     public var reviewCount: Int?
-    
+    public var reviewUrl: String?
     public var metatags: Dictionary<String, Any?>?
     public var key: String?
     public var value: Any?
