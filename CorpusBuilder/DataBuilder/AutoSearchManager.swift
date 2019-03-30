@@ -20,7 +20,7 @@ protocol AutoSearchPipeLineDelegate {
 public class AutoSearchManager: AutoSearchPipeLineDelegate {
     
     public var keys: [String]?
-    
+    public var numberOfSearches: Int = 0
     var autoSearchDelegate: AutoSearchDelegate?
     public var autoSearchParams: Response?
     
@@ -34,7 +34,7 @@ public class AutoSearchManager: AutoSearchPipeLineDelegate {
         guard let _ = autoSearchParams else {
             return false
         }
-        
+        numberOfSearches = (autoSearchParams?.searchEntries.count)!
         for entry in (autoSearchParams?.searchEntries)! {
             var selectedCx: String = AutoSearchConst.GOOGLE_CX
             let type = entry.flavor

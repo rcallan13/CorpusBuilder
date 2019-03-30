@@ -14,6 +14,9 @@ class ViewController: NSViewController, AutoSearchDelegate {
     static var index: Int = -1
     var autoSearchManager: AutoSearchManager?
     var searchResults: Dictionary<String, [SearchModel]?>?
+    var resultJson: String?
+    var businesses: [SearchModel]?
+    var seenResults: Int = 0
     
     @IBOutlet weak var scrollView: NSScrollView!
     
@@ -30,7 +33,7 @@ class ViewController: NSViewController, AutoSearchDelegate {
     
     func onSearchResults(_ searchResults: [NlpResult]?) {
         
-        var resultsStr = String()
+        seenResults += 1
         /*
          guard let _ = searchResults, let _ = searchResults?[0].searchPath else {
          activityIndicator.stopAnimating()
@@ -43,7 +46,7 @@ class ViewController: NSViewController, AutoSearchDelegate {
  */
         //resultsStr.append("\"section\": {")
         let searchPath = (searchResults?[0].searchPath)!
-        var businesses = [SearchModel]()
+        
         for searchResult in searchResults! {
             var business = SearchModel()
             if let localbusiness = searchResult.kvDict?["localbusiness"] as? NSArray {
@@ -67,39 +70,48 @@ class ViewController: NSViewController, AutoSearchDelegate {
                     
                 }
             }
-            businesses.append(business)
+            businesses?.append(business)
             self.searchResults?[searchPath] = businesses
         }
         
-        //activityIndicator.stopAnimating()
-        displayResults(businesses, prettyPrinted: true)
+        if autoSearchManager?.numberOfSearches == seenResults {
+            
+            //activityIndicator.stopAnimating()
+            displayResults(businesses!, prettyPrinted: false)
+        }
     }
     
     private func displayResults(_ searchResults: [SearchModel], prettyPrinted: Bool) {
         
-        var resultJson = String()
-        resultJson.append("{\"results\":[")
+        resultJson = String()
+        resultJson?.append("{\"results\":[")
         
         var isFirst = true
         for searchModel in searchResults {
             if !isFirst {
-                resultJson.append(",")
+                resultJson?.append(",")
             }
             isFirst = false
             let jsonStr = searchModel.toJsonString()
-            resultJson.append(jsonStr!)
+            resultJson?.append(jsonStr!)
         }
         
-        resultJson.append("]}\n\n\n")
-        NSLog(resultJson)
+        resultJson?.append("]}")
+        let success = Util.writeDataToFile(resultJson, file: "~/results_corpus.json")
+        if !success {
+            NSLog("Writing to file failed!")
+        }
+        NSLog(resultJson!)
         //if JSONSerialization.isValidJSONObject(resultJson) {
-            DispatchQueue.main.async {
-                self.scrollView.documentView!.insertText(resultJson)
-            }
-        //}
+        DispatchQueue.main.async {
+            self.scrollView.documentView!.insertText(self.resultJson!)
+        }
     }
     
     private func initSearch() {
+        seenResults = 0
+        businesses = [SearchModel]()
+        
         self.searchResults = Dictionary<String, [SearchModel]?>()
         autoSearchManager = AutoSearchManager()
         //activityIndicator.startAnimating()
@@ -108,6 +120,9 @@ class ViewController: NSViewController, AutoSearchDelegate {
             // display a message
             //createDefaultAutoSearchView()
             //activityIndicator.stopAnimating()
+        } else {
+            
+            //}
         }
     }
 }

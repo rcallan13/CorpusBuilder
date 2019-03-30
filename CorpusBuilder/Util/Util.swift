@@ -6,9 +6,11 @@
 //  Copyright © 2019 RCAL Software Solutions. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 class Util {
+    
+    static var fileURL: URL?
     
     /**
      read in the json file
@@ -30,5 +32,25 @@ class Util {
         return nil
     }
     
+    public static func writeDataToFile(_ dataStr: String?, file: String) -> Bool {
+       
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        for p in paths {
+            NSLog(p.absoluteString)
+        }
+        //[0]    URL    "file:///Users/ronallan/Library/Containers/com.rcal.CorpusBuilder/Data/Documents/"
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            
+            fileURL = dir.appendingPathComponent(file)
+            
+            //writingc
+            do {
+                try dataStr?.write(to: fileURL!, atomically: false, encoding: .utf8)
+                return true
+            }
+            catch {/* error handling here */}
+        }
+        return false
+    }
     
 }
