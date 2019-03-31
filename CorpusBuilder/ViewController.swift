@@ -97,7 +97,7 @@ class ViewController: NSViewController, AutoSearchDelegate {
         }
         
         resultJson?.append("]}")
-        let success = Util.writeDataToFile(resultJson, file: "~/results_corpus.json")
+        let success = Util.writeDataToFile(resultJson, file: "results_corpus.json")
         if !success {
             NSLog("Writing to file failed!")
         }

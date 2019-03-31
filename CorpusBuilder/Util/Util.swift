@@ -36,7 +36,7 @@ class Util {
        
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         for p in paths {
-            NSLog(p.absoluteString)
+            NSLog("PATH: \(p.absoluteString)")
         }
         //[0]    URL    "file:///Users/ronallan/Library/Containers/com.rcal.CorpusBuilder/Data/Documents/"
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {

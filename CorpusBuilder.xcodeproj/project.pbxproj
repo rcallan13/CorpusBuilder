@@ -25,6 +25,7 @@
 		2A638465224A5453002E9F34 /* JsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A638463224A5453002E9F34 /* JsonParser.swift */; };
 		2A638467224A5484002E9F34 /* autosearch.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A638466224A5484002E9F34 /* autosearch.json */; };
 		2A638469224A55CE002E9F34 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A638468224A55CE002E9F34 /* SearchModel.swift */; };
+		2AB1953A2250F8A600319449 /* queries.cbt in Resources */ = {isa = PBXBuildFile; fileRef = 2AB195392250F8A600319449 /* queries.cbt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		2A638463224A5453002E9F34 /* JsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonParser.swift; sourceTree = "<group>"; };
 		2A638466224A5484002E9F34 /* autosearch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = autosearch.json; sourceTree = "<group>"; };
 		2A638468224A55CE002E9F34 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
+		2AB195392250F8A600319449 /* queries.cbt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = queries.cbt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 		2A63841822491695002E9F34 = {
 			isa = PBXGroup;
 			children = (
+				2AB195392250F8A600319449 /* queries.cbt */,
 				2A638466224A5484002E9F34 /* autosearch.json */,
 				2A63842322491695002E9F34 /* CorpusBuilder */,
 				2A63843622491697002E9F34 /* CorpusBuilderTests */,
@@ -244,6 +247,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AB1953A2250F8A600319449 /* queries.cbt in Resources */,
 				2A63842922491697002E9F34 /* Assets.xcassets in Resources */,
 				2A638467224A5484002E9F34 /* autosearch.json in Resources */,
 				2A63842C22491697002E9F34 /* Main.storyboard in Resources */,

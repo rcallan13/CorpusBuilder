@@ -9,5 +9,10 @@
         "expression": "hair dresser",
         "location": "vancouver, b.c.",
         "flavor": "business"
+    },
+    {"search_name": "coins",
+        "expression": "chinese restaurants",
+        "location": "vancouver, b.c.",
+        "flavor": "business"
     }]
 }
