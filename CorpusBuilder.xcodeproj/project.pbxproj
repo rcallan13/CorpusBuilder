@@ -26,6 +26,8 @@
 		2A638467224A5484002E9F34 /* autosearch.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A638466224A5484002E9F34 /* autosearch.json */; };
 		2A638469224A55CE002E9F34 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A638468224A55CE002E9F34 /* SearchModel.swift */; };
 		2AB1953A2250F8A600319449 /* queries.cbt in Resources */ = {isa = PBXBuildFile; fileRef = 2AB195392250F8A600319449 /* queries.cbt */; };
+		2AB1953E2250FAFA00319449 /* model_create_steps in Resources */ = {isa = PBXBuildFile; fileRef = 2AB1953D2250FAFA00319449 /* model_create_steps */; };
+		2AB1954222523CBB00319449 /* BusinessSearch.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2AB1954122523CBB00319449 /* BusinessSearch.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		2A638466224A5484002E9F34 /* autosearch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = autosearch.json; sourceTree = "<group>"; };
 		2A638468224A55CE002E9F34 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		2AB195392250F8A600319449 /* queries.cbt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = queries.cbt; sourceTree = "<group>"; };
+		2AB1953D2250FAFA00319449 /* model_create_steps */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = model_create_steps; sourceTree = "<group>"; };
+		2AB1954122523CBB00319449 /* BusinessSearch.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = BusinessSearch.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,8 @@
 		2A63841822491695002E9F34 = {
 			isa = PBXGroup;
 			children = (
+				2AB1954122523CBB00319449 /* BusinessSearch.mlmodel */,
+				2AB1953D2250FAFA00319449 /* model_create_steps */,
 				2AB195392250F8A600319449 /* queries.cbt */,
 				2A638466224A5484002E9F34 /* autosearch.json */,
 				2A63842322491695002E9F34 /* CorpusBuilder */,
@@ -251,6 +257,7 @@
 				2A63842922491697002E9F34 /* Assets.xcassets in Resources */,
 				2A638467224A5484002E9F34 /* autosearch.json in Resources */,
 				2A63842C22491697002E9F34 /* Main.storyboard in Resources */,
+				2AB1953E2250FAFA00319449 /* model_create_steps in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +280,7 @@
 				2A63842722491695002E9F34 /* ViewController.swift in Sources */,
 				2A638454224A52E3002E9F34 /* AutoSearchManager.swift in Sources */,
 				2A638457224A52E3002E9F34 /* AutoSearchProcessor.swift in Sources */,
+				2AB1954222523CBB00319449 /* BusinessSearch.mlmodel in Sources */,
 				2A638453224A52E3002E9F34 /* AutoSearchEntry.swift in Sources */,
 				2A638452224A52E3002E9F34 /* AutoSearchResult.swift in Sources */,
 				2A638464224A5453002E9F34 /* Util.swift in Sources */,
