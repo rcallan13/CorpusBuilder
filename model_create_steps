@@ -11,3 +11,11 @@ model.export_coreml('Poets.mlmodel')
 https://github.com/apple/turicreate
 
 data['pagemap']
+
+Steps to creating a model:
+1. retrieve the search results
+2. separate the objects that are specific businesses
+3. get the review links for each business
+4. get all of the reviews for each business
+5. get the address of each business
+
